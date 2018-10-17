@@ -1,47 +1,72 @@
-Particle [] bitch;
+NormalParticle [] bitch;
 void setup()
 {
   size(630, 630);
-  bitch = new Particle [10];
+  
+  noStroke();
+  bitch = new NormalParticle [3000];
   for (int i = 0; i < bitch.length; i++) {
-    bitch[i] = new Particle();
+    bitch[i] = new NormalParticle();
   }
 }
 void draw()
-{
+{background(0);
+
   for (int i = 0; i < bitch.length; i++) {
     bitch[i].show();
     bitch[i].move();
   }
+//if (mousePressed == true){
+// bitch[0] =  new NormalParticle();
+//}
 }
-void show(){
-  
-}
-void move(){
-  
-}
+
 class NormalParticle
 {
 
-  fill(r, g, b);
+  int r, g, b;
   double myX, myY, mySpeed;
-  int myAngle;
+  double myAngle;
+  NormalParticle()
+  {
+    myY = myX = 315;
+   
+    r = (int)(Math.random() * 0)+150;
+    g = (int)(Math.random() * 100)+150;
+    b = (int)(Math.random() * 255)+100;
+    myAngle = (int)(Math.PI*10* Math.random());
+    mySpeed =  Math.random() * 10;
+  }
+  void show() {
+    fill(r, g, b);
+    
+    ellipse((float)myX,(float)myY,2,2);
+  }
+  void move() {
+
+    myX = myX + (Math.cos(myAngle) * mySpeed);
+    myY = myY + (Math.sin(myAngle) * mySpeed);
+    while( myAngle < 4){
+    myAngle += .05;
+    }
+  }
+
 }
 interface Particle
 {
-  Particle()
-  {
-    int r = (int)(Math.random() * 256);
-    int g = (int)(Math.random() * 256);
-    int b = (int)(Math.random() * 256);
-    fill(r, g, b);
-  }
+  public void move();
+  public void show();
+  
 }
 class OddballParticle //uses an interface
 {
-  //your code here
+  
+  OddballParticle(){
+    
+  }
+  
 }
 class JumboParticle //uses inheritance
 {
-  //your code here
+  
 }
