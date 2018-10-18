@@ -11,14 +11,17 @@ void setup()
 }
 void draw()
 {background(0);
-
+if (mousePressed == true){
+  for(int r = 0; r <10; r++){
   for (int i = 0; i < bitch.length; i++) {
     bitch[i].show();
     bitch[i].move();
   }
-//if (mousePressed == true){
-// bitch[0] =  new NormalParticle();
-//}
+  
+ }
+ 
+
+}
 }
 
 class NormalParticle
@@ -29,7 +32,7 @@ class NormalParticle
   double myAngle;
   NormalParticle()
   {
-    myY = myX = 315;
+    myY = myX = (int)(Math.random()*630);
    
     r = (int)(Math.random() * 0)+150;
     g = (int)(Math.random() * 100)+150;
